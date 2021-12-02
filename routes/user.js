@@ -46,7 +46,6 @@ router.delete('/delete/:id', async(req,res)=>{
 router.get('/', async(req,res)=>{
     const userId = req.query.userId
     const username = req.query.username
-    console.log('Username: ', username)
     try{
         const user  = userId ? await User.findById(userId) : await User.findOne({username: username });
         const {password, updatedAt, ...other} = user._doc
@@ -60,6 +59,8 @@ router.get('/', async(req,res)=>{
 router.put('/follow/:id', async(req,res)=>{
     const userId = req.body.userId
     const paramsId = req.params.id
+    console.log('User ID: ', userId)
+    console.log('Params Id: ', paramsId)
     if(userId !== paramsId){
         try{
             const user = await User.findById(paramsId)
@@ -69,7 +70,7 @@ router.put('/follow/:id', async(req,res)=>{
                 await currentUser.updateOne({$push: {followings: paramsId}})
                 res.status(200).json('User has Been Follwed')
             }else{
-                res.status(200).json("You Allready Follow this users")
+                res.status(200).json("You All ready Follow this users")
             }
         }catch (e){
             res.status(500).json(e)

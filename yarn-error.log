@@ -1,0 +1,50 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\HP\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add multer path
+
+PATH: 
+  C:\Users\HP\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\HP\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;D:\Development_06_10_20\laragon\bin\php\php-7.4.13-Win32-VC15-x64;C:\composer;C:\Program Files (x86)\HP\IdrsOCR_15.4.1203.0;C:\Program Files (x86)\Brackets\command;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Users\HP\AppData\Local\Yarn\config\global\node_modules\.bin;C:\Users\HP\AppData\Roaming\Composer\vendor\bin;D:\Development_06_10_20\laragon\bin;D:\Development_06_10_20\laragon\bin\apache\httpd-2.4.35-win64-VC15\bin;D:\Development_06_10_20\laragon\bin\composer;D:\Development_06_10_20\laragon\bin\git\bin;D:\Development_06_10_20\laragon\bin\git\cmd;D:\Development_06_10_20\laragon\bin\git\mingw64\bin;D:\Development_06_10_20\laragon\bin\git\usr\bin;D:\Development_06_10_20\laragon\bin\laragon\utils;D:\Development_06_10_20\laragon\bin\mysql\mysql-5.7.24-winx64\bin;D:\Development_06_10_20\laragon\bin\nginx\nginx-1.16.0;D:\Development_06_10_20\laragon\bin\ngrok;D:\Development_06_10_20\laragon\bin\nodejs\node-v12;D:\Development_06_10_20\laragon\bin\notepad++;D:\Development_06_10_20\laragon\bin\php\php-7.4.13-Win32-VC15-x64;D:\Development_06_10_20\laragon\bin\putty;D:\Development_06_10_20\laragon\bin\redis\redis-x64-3.2.100;D:\Development_06_10_20\laragon\bin\telnet;D:\Development_06_1;C:\Users\HP\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\HP\AppData\Local\Programs\Hyper\resources\bin;C:\Users\HP\AppData\Roaming\npm;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.11
+
+Node version: 
+  14.18.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'F:\Programming Hero\react-js\Facebook\backend\node_modules\bcrypt\lib\binding\napi-v3\bcrypt_lib.node'
+
+npm manifest: 
+  {
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+      "bcrypt": "^5.0.1",
+      "cors": "^2.8.5",
+      "dotenv": "^10.0.0",
+      "express": "^4.17.1",
+      "helmet": "^4.6.0",
+      "mongodb": "^4.1.4",
+      "mongoose": "^6.0.12",
+      "morgan": "^1.10.0"
+    },
+    "devDependencies": {},
+    "scripts": {
+      "start": "node index.js",
+      "start-dev": "nodemon index.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

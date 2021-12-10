@@ -7,9 +7,9 @@ router.post('/create',  async (req, res)=>{
     console.log("New Post: ", newPost)
     try{
         const savePost = await newPost.save()
-        res.status(200).json(savePost)
+        await res.status(200).json(savePost)
     }catch(err){
-        res.status(500).json(err.message)
+        await res.status(500).json(err.message)
     }
 })
 // UPDATE POST
@@ -20,12 +20,12 @@ router.put('/update/:id', async (req, res)=>{
         const post = await Post.findById(paramsId)
         if(post.userId === userId){
             await post.updateOne({$set: req.body})
-            res.status(200).json('The Post Has been Updates')
+            await res.status(200).json('The Post Has been Updates')
         }else{
-            res.status(403).json('You can update only your post')
+            await res.status(403).json('You can update only your post')
         }
     }catch(err){
-        res.status(500).json(err)
+        await res.status(500).json(err.message)
     }
 })
 // DELETE POST
@@ -36,12 +36,12 @@ router.delete('/delete/:id', async (req, res)=>{
         const post = await Post.findById(paramsId)
         if(post.userId === userId){
             await post.deleteOne()
-            res.status(200).json('Your Post Has been Delete')
+            await res.status(200).json('Your Post Has been Delete')
         }else{
-            res.status(403).json('You Can Not Update')
+            await res.status(403).json('You Can Not Update')
         }
     }catch (err){
-        res.status(500).json(err)
+        await res.status(500).json(err.message)
     }
 })
 // LIKE & DISLIKE A POST
@@ -52,13 +52,13 @@ router.put('/like/:id', async(req, res)=>{
         const post = await Post.findById(paramsId)
         if(!post.likes.includes(userId)){
             await post.updateOne({$push: {likes: userId}})
-            res.status(200).json("This Post has been liked")
+            await res.status(200).json("This Post has been liked")
         }else{
             await post.updateOne({$pull: {likes: userId}})
-            res.status(200).json('The Post Has Been Disliked')
+            await res.status(200).json('The Post Has Been Disliked')
         }
     }catch (err){
-        res.status(500).json(err)
+        await res.status(500).json(err.message)
     }
 })
 
@@ -70,13 +70,13 @@ router.put('/heart/:id', async(req, res)=>{
         const post = await Post.findById(paramsId)
         if(!post.likes.includes(userId)){
             await post.updateOne({$push: {hearts: userId}})
-            res.status(200).json("This Post has been hearted")
+            await res.status(200).json("This Post has been hearted")
         }else{
             await post.updateOne({$pull: {hearts: userId}})
-            res.status(200).json('The Post Has Been Dishearted')
+            await res.status(200).json('The Post Has Been Dishearted')
         }
     }catch (err){
-        res.status(500).json(err)
+        await res.status(500).json(err.message)
     }
 })
 
@@ -85,9 +85,9 @@ router.get('/:id', async(req, res)=>{
     const paramsId = req.params.id
     try{
         const post = await Post.findById(paramsId)
-        res.status(200).json(post)
+        await res.status(200).json(post)
     }catch(err){
-        res.status(500).json(err)
+        await res.status(500).json(err.message)
     }
 })
 // TIMELINE POST
@@ -101,9 +101,9 @@ router.get('/timeline/:id', async(req, res)=>{
                 return Post.find({userId:friendId})
             })
         )
-        res.status(200).json(userPosts.concat(...friendPosts))
+        await res.status(200).json(userPosts.concat(...friendPosts))
     }catch(error){
-        res.status(500).json(error)
+        await res.status(500).json(error.message)
     }
 })
 // USER POSTS
@@ -113,9 +113,9 @@ router.get('/profile/:username', async (req,res)=>{
         const user = await User.findOne({username: userName})
         const posts = await Post.find({userId: user._id})
         console.log(posts)
-        res.status(200).json(posts)
+        await res.status(200).json(posts)
     }catch (e) {
-        res.status(503).json(e)
+        await res.status(503).json(e.message)
     }
 })
 

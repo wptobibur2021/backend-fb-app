@@ -25,14 +25,9 @@ const bcrypt = require('bcrypt')
     route.post('/login', async (req, res)=>{
         const email = req.body.email
         console.log(email)
-        // const user = await User.findOne({email: req.body.email})
-        // !user && await res.status(400).json('User not found')
-        // const validPassword = await bcrypt.compare(req.body.password, user.password)
-        // !validPassword && await res.status(400).json('Wrong Password')
-        // await res.status(200).json(user)
-
         try{
             const user = await User.findOne({email: req.body.email})
+            console.log('User: ', user)
             !user && await res.status(400).json('User not found')
             const validPassword = await bcrypt.compare(req.body.password, user.password)
             !validPassword && await res.status(400).json('Wrong Password')

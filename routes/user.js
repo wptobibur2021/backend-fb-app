@@ -20,7 +20,7 @@ router.put('/update/:id', async (req,res)=>{
             })
             await res.status(200).json('Account has been updated')
         }catch (e) {
-            return res.status(500).json(e)
+            return res.status(500).json(e.message)
         }
     }else{
         return res.status(403).json('You can update only your account')
@@ -36,7 +36,7 @@ router.delete('/delete/:id', async(req,res)=>{
             await User.findByIdAndDelete(id)
             await res.status(200).json('Account has been deleted')
         }catch (e) {
-            return res.status(500).json(e)
+            return res.status(500).json(e.message)
         }
     }else{
         return res.status(403).json('You can update only your account')
@@ -51,7 +51,7 @@ router.get('/', async(req,res)=>{
         const {password, updatedAt, ...other} = user._doc
         res.status(200).json(other)
     }catch(e){
-        return res.status(500).json(e)
+        return res.status(500).json(e.message)
     }
 
 })
@@ -73,7 +73,7 @@ router.put('/follow/:id', async(req,res)=>{
                 res.status(200).json("You All ready Follow this users")
             }
         }catch (e){
-            res.status(500).json(e)
+            res.status(500).json(e.message)
         }
     }else{
         return res.status(403).json('You cant follow yourself')
@@ -95,7 +95,7 @@ router.put('/unfollow/:id', async(req,res)=>{
                 res.status(200).json("You Allready unFollow this users")
             }
         }catch (e){
-            res.status(500).json(e)
+            res.status(500).json(e.message)
         }
     }else{
         return res.status(403).json('You cant unfollow yourself')
@@ -120,7 +120,7 @@ router.get("/friends/:userId", async (req,res)=>{
         console.log("FrindList: ", friendList)
         res.status(200).json(friendList)
     }catch (e) {
-        res.status(500).json(e)
+        res.status(500).json(e.message)
     }
 })
 

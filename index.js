@@ -45,9 +45,18 @@ app.use('/api/users', userRoute)
 app.use('/api/auth', authRoute)
 app.use('/api/post', postRoute)
 
-mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true, useUnifiedTopology: true}, ()=>{
-    console.log('database ok')
-});
+mongoose.connect(
+    process.env.MONGODB_URL,
+    { useNewUrlParser: true, useUnifiedTopology: true},
+    () => {
+        console.log('Connected to MongoDB');
+    }
+);
+
+
+// mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true, useUnifiedTopology: true}, ()=>{
+//     console.log('database ok')
+// });
 
 //Root Get API
 app.get('/', async (req,res)=>{

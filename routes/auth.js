@@ -18,11 +18,19 @@ const bcrypt = require('bcrypt')
             const user = await newUser.save()
             await res.status(200).json(user)
         }catch (e) {
-            await res.status(500).console.log(e)
+           await res.status(500).json(e.message)
         }
     })
     // LOGIN
     route.post('/login', async (req, res)=>{
+        const email = req.body.email
+        console.log(email)
+        // const user = await User.findOne({email: req.body.email})
+        // !user && await res.status(400).json('User not found')
+        // const validPassword = await bcrypt.compare(req.body.password, user.password)
+        // !validPassword && await res.status(400).json('Wrong Password')
+        // await res.status(200).json(user)
+
         try{
             const user = await User.findOne({email: req.body.email})
             !user && await res.status(400).json('User not found')
@@ -30,7 +38,7 @@ const bcrypt = require('bcrypt')
             !validPassword && await res.status(400).json('Wrong Password')
             await res.status(200).json(user)
         }catch (e) {
-            await res.status(500).json(e)
+            await res.status(500).json(e.message)
         }
     })
 module.exports = route
